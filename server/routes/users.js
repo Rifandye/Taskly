@@ -128,7 +128,7 @@ module.exports = async function (fastify, opts) {
 
         reply
           .status(200)
-          .send({ message: "User Sucessfully Deleted", user: user });
+          .send({ message: "User Deleted Successfully", user: user });
       } catch (error) {
         reply.send(error);
       }
