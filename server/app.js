@@ -7,7 +7,7 @@ const AutoLoad = require("@fastify/autoload");
 const options = {};
 
 module.exports = async function (fastify, opts) {
-  // Place here your custom code!
+  // Place here your custom code!s
 
   // Do not touch the following lines
   fastify.register(AutoLoad, {
