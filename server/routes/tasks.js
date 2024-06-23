@@ -20,4 +20,23 @@ module.exports = async function (fastify, opts) {
       }
     }
   );
+
+  fastify.delete(
+    "/tasks/:id",
+    { onRequest: [fastify.authenticate] },
+    async function (request, reply) {
+      try {
+        const id = request.params.id;
+
+        const task = await Task.findByIdAndDelete(id);
+        if (!task) throw fastify.httpErrors.notFound("Task Not Found");
+
+        reply
+          .status(200)
+          .send({ message: "Task Deleted Successfully", task: task });
+      } catch (error) {
+        reply.send(error);
+      }
+    }
+  );
 };
